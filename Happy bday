@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christmas & Birthday Book</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: linear-gradient(135deg, #0f9d58, #b71c1c);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }.book {
+  width: 300px;
+  height: 420px;
+  perspective: 1200px;
+}
+
+.cover, .page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transform-origin: left;
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+
+.cover {
+  background: #b71c1c;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.8rem;
+  padding: 20px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.page {
+  background: #fff8e1;
+  color: #333;
+  padding: 25px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.page.two {
+  z-index: 1;
+}
+
+.page.one {
+  z-index: 2;
+}
+
+.open .cover {
+  transform: rotateY(-160deg);
+}
+
+.open .page.one {
+  transform: rotateY(-150deg);
+}
+
+.open .page.two {
+  transform: rotateY(-10deg);
+}
+
+.hint {
+  position: absolute;
+  bottom: -40px;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+/* Snow effect */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 1em;
+  user-select: none;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+  </style>
+</head>
+<body>
+<audio id="song" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Valentines_Day/Kevin_MacLeod_-_Love_Me.mp3"></audio>  <div class="book" onclick="this.classList.toggle('open'); document.getElementById('song').play();">
+    <div class="cover">
+      📖<br />
+      📖<br />
+      Tap to Open<br /><br />
+      Merry Christmas 🎄<br />
+      & Happy Birthday 🎂<br /><br />
+      <strong>Quatara</strong>
+    </div><div class="page one">
+  <h2>Dear Quatara 💖</h2>
+  <p>
+    Today is not just Christmas — it’s also the day the world got someone amazing.
+  </p>
+  <p>
+    May your heart be full of joy, laughter, and good vibes always.
+  </p>
+</div>
+
+<div class="page two">
+  <h2>Special Wishes ✨</h2>
+  <p>
+    May your dreams come true and your days be bright.
+  </p>
+  <p>
+    Never forget how special you are to the people around you.
+  </p>
+  <p>
+    Merry Christmas 🎄 and Happy Birthday 🥳
+  </p>
+</div>
+
+  </div>  <div class="hint">Tap the book to open & read 📚</div><script>
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.innerHTML = '❄';
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 300);
+  </script></body>
+</html>
